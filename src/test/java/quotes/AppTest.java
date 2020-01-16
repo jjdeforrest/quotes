@@ -9,9 +9,9 @@ import java.io.*;
 
 public class AppTest {
     @Test
-    void testQuoteConstructor() throws FileNotFoundException {
-        String testResponse = App.findRandomQuote("src/main/resources/recentquotes.json");
-//        boolean test = testResponse != null;
-//        Assert.assertTrue("find random quote returns quote", test);
+    public void testApp(){
+        File testFile = new File("src/main/resources/recentquotes.json");
+        boolean test = testFile.exists();
+        Assert.assertTrue("File should exist",test);
     }
 }
