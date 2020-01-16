@@ -3,12 +3,15 @@
  */
 package quotes;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.*;
+
+import java.io.*;
 
 public class AppTest {
-    @Test public void testAppHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+    @Test
+    void testQuoteConstructor() throws FileNotFoundException {
+        String testResponse = App.findRandomQuote("src/main/resources/recentquotes.json");
+//        boolean test = testResponse != null;
+//        Assert.assertTrue("find random quote returns quote", test);
     }
 }
