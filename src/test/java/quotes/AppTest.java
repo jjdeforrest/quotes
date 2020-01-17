@@ -14,4 +14,9 @@ public class AppTest {
         boolean test = testFile.exists();
         Assert.assertTrue("File should exist",test);
     }
+    @Test
+    public void testRonSwansonIfYouDare() throws IOException {
+        boolean test = App.getRonSwanson().text != null;
+        Assert.assertTrue("A quote is returned whether or not the internet is working",test);
+    }
 }

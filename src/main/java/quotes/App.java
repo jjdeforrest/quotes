@@ -3,18 +3,18 @@
  */
 package quotes;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Random;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
 public class App {
 
     public static void main(String[] args) throws FileNotFoundException {
         findRandomQuote("src/main/resources/recentquotes.json");
     }
-    public static String findRandomQuote(String path) throws FileNotFoundException {
+    public static Quote findRandomQuote(String path) throws FileNotFoundException {
         Gson gson = new Gson();
         FileReader reader = new FileReader(path);
 
@@ -22,6 +22,23 @@ public class App {
 
         Random rand = new Random();
         int random = rand.nextInt(quotey.length);
-        return quotey[random].toString();
+        return quotey[random];
+    }
+    public static Quote getRonSwanson() throws IOException {
+        try {
+            URL url = new URL("https://ron-swanson-quotes.herokuapp.com/v2/quotes");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            BufferedReader input = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+            String quote = input.readLine();
+            quote = quote.substring(1, quote.length() - 1);
+            String[] placeholder = new String[]{};
+            Quote ronSwansonQuote = new Quote(placeholder, "Ron Swanson", "", quote);
+            return ronSwansonQuote;
+        } catch (IOException e){
+            return findRandomQuote("src/main/resources/recentquotes.json");
+        }
     }
 }
