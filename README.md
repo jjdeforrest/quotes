@@ -1,8 +1,8 @@
 <h1>Shane and Joshua's Quote app</h1>
 <p>What this app does:</p>
 <ol>
-<li>Returns a random quote from a file</li>
-<li>End of list.</li>
+<li>getRandomQuote(): Will return a random quote from a file</li>
+<li>getRonSwanson(): Will return a Ron Swanson quote from an API or a random quote if API call fails</li>
 </ol>
 
 <p>The why behind the why:</p>
