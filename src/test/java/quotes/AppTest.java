@@ -14,4 +14,9 @@ public class AppTest {
         boolean test = testFile.exists();
         Assert.assertTrue("File should exist",test);
     }
+    @Test
+    public void testRonSwansonIfYouDare() throws IOException {
+        String expected = "Ron Swanson";
+        Assert.assertEquals("Author should be Ron Swanson",expected,App.getRonSwanson().author);
+    }
 }

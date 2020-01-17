@@ -10,8 +10,8 @@ public class QuoteTest {
 
     @Test
     public void testToString() throws FileNotFoundException {
-        String testResponse = App.findRandomQuote("src/main/resources/recentquotes.json");
-        boolean test = testResponse != null;
+        Quote quote = App.findRandomQuote("src/main/resources/recentquotes.json");
+        boolean test = quote.tags != null;
         assertTrue("find random quote returns quote", test);
     }
 }
