@@ -24,6 +24,13 @@ public class App {
         int random = rand.nextInt(quotey.length);
         return quotey[random];
     }
+    public static Quote[] getAllQuotes() throws FileNotFoundException {
+
+        Gson gson = new Gson();
+        FileReader reader = new FileReader("src/main/resources/recentquotes.json");
+
+        return gson.fromJson(reader,Quote[].class);
+    }
     public static Quote getRonSwanson() throws IOException {
         try {
             URL url = new URL("https://ron-swanson-quotes.herokuapp.com/v2/quotes");
@@ -36,6 +43,7 @@ public class App {
             quote = quote.substring(1, quote.length() - 1);
             String[] placeholder = new String[]{};
             Quote ronSwansonQuote = new Quote(placeholder, "Ron Swanson", "", quote);
+            ronSwansonQuote.stashQuote();
             return ronSwansonQuote;
         } catch (IOException e){
             return findRandomQuote("src/main/resources/recentquotes.json");

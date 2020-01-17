@@ -14,4 +14,13 @@ public class QuoteTest {
         boolean test = quote.tags != null;
         assertTrue("find random quote returns quote", test);
     }
+    @Test
+    public void testStashQuote(){
+        try {
+            Quote quotey = App.getRonSwanson();
+            quotey.stashQuote();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }
