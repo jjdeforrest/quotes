@@ -11,8 +11,8 @@ import java.util.*;
 
 public class App {
 
-    public static void main(String[] args) throws FileNotFoundException {
-        findRandomQuote("src/main/resources/recentquotes.json");
+    public static void main(String[] args) throws IOException {
+        getRonSwanson();
     }
     public static Quote findRandomQuote(String path) throws FileNotFoundException {
         Gson gson = new Gson();
@@ -44,9 +44,12 @@ public class App {
             String[] placeholder = new String[]{};
             Quote ronSwansonQuote = new Quote(placeholder, "Ron Swanson", "", quote);
             ronSwansonQuote.stashQuote();
+            System.out.println(ronSwansonQuote);
             return ronSwansonQuote;
         } catch (IOException e){
-            return findRandomQuote("src/main/resources/recentquotes.json");
+            Quote result = findRandomQuote("src/main/resources/recentquotes.json");
+            System.out.println(result);
+            return result;
         }
     }
 }
